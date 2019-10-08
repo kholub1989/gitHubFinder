@@ -56,6 +56,30 @@ class UI {
     }, 3000);
   }
 
+  // Show user repos 
+  showRepos(repos) {
+    let output = '';
+
+    repos.forEach(function(repo){
+      output += `
+        <div class="card card-body mb-2">
+          <div class="row">
+            <div class="col-md-6">
+              <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+            </div>
+            <div class="col-md-6">
+              <span class="badge badge-primary mb-2">Stars: ${repo.stargazers_count}</span>
+              <span class="badge badge-secondary mb-2">PWatchers: ${repo.watchers_count}</span>
+              <span class="badge badge-success mb-2">Forks: ${repo.forms_count}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+    // Output repos
+    document.getElementById('repos').innerHTML = output;
+  }
+
   // Clear alert message
   clearAlert() {
     const currentAlert = document.querySelector('.alert')
